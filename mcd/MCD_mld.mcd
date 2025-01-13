@@ -1,0 +1,37 @@
+%%mocodo
+:
+AUTHORS: id_author, first_name, last_name
+:::
+BOOKS: isbn, title, release_date, collection, #id_author > AUTHORS > id_author, #id_library > LIBRARIES > id_library, quantity, room, shelf, position, #id_publisher > PUBLISHERS > id_publisher
+:::::
+EVENTS: id_event, type, date, #id_library > LIBRARIES > id_library
+:
+
+
+:
+PUBLISHERS: id_publisher, name
+:::
+IS_LENDED: #id_lending > LENDINGS > id_lending, _#isbn > BOOKS > isbn
+:
+ORDERED: #id_order > ORDERS > id_order, _#isbn > BOOKS > isbn
+:
+LIBRARIES: id_library, name, address, region
+:::
+
+
+:::
+LENDINGS: id_lending, begin_date, end_date, returned, #email 1 > SUBSCRIBERS > email, delay, return_date, #email 2 > SUBSCRIBERS > email
+:::
+ORDERS: id_order, #id_lending > LENDINGS > id_lending, #id_transfert > TRANSFERTS > id_transfert
+:
+FROM_TO: #id_library > LIBRARIES > id_library, _#id_order > ORDERS > id_order
+:
+EMPLOYEES: id_employee, first_name, last_name, is_present, #id_library > LIBRARIES > id_library
+:
+
+
+:
+SUBSCRIBERS: email, first_name, last_name, dob
+:::::::
+TRANSFERTS: id_transfert, date_sent, date_received, #id_employee > EMPLOYEES > id_employee
+:::

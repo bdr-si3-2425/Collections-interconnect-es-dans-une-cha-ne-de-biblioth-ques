@@ -1,20 +1,20 @@
 AUTHORS: id_author, first_name, last_name
-WRITTEN BY, 0N AUTHORS, 11 BOOKS
+WRITTEN_BY, 0N AUTHORS, 11 BOOKS
 BOOKS: isbn, title, release_date, collection
 HOLDS, 0N LIBRARIES, 11 BOOKS: quantity, room, shelf, position
 ORGANIZE, 0N LIBRARIES, 11 EVENTS
 EVENTS: id_event, type, date
 
 PUBLISHERS: id_publisher, name
-PUBLISHED BY, 0N PUBLISHERS, 11 BOOKS
-IS LENDED, 1N LENDINGS, 0N BOOKS
+PUBLISHED_BY, 0N PUBLISHERS, 11 BOOKS
+IS_LENDED, 1N LENDINGS, 0N BOOKS
 ORDERED, 0N ORDERS, 1N BOOKS
 LIBRARIES: id_library, name, address, region
 WORKS, 11 EMPLOYEES, 1N LIBRARIES
 
 VIOLATE, 0N SUBSCRIBERS, 11 LENDINGS: delay, return_date
 LENDINGS: id_lending, begin_date, end_date, returned
-IS MADE FROM, 11 ORDERS, 01 LENDINGS
+IS_MADE_FROM, 11 ORDERS, 01 LENDINGS
 ORDERS: id_order
 FROM_TO, 0N LIBRARIES, 22 ORDERS
 EMPLOYEES: id_employee, first_name, last_name, is_present
