@@ -1,0 +1,64 @@
+Question : 
+- Un abonnée est-il associé a une bibliothèque ?
+Non
+
+Bibliothèque demandé quand on réserve
+- Quel est la fréquence des infractions ? 
+Par an 
+
+- Qu'est-ce qu'un abonné ? 
+nom, prenom, mail, dateNaissance
+
+- Combien de temps dure un prêt ? 
+1 mois
+renouvelable 1 fois 2 semaines 
+
+- Comment fonctionne le système de transfert ? 
+1 semaine d'envoie / S'il 5 livre on envoie sinon les dimanches 
+On choisi 
+
+- Système de région ? 
+Région FR 
+
+
+- Est-ce que chaque exemplaire a un id unique ? 
+livre ISBN
+
+
+- Emplacement exact du livre ? Ou juste Etagère ? 
+Piece Numéroté 
+Chaque pièce étagère 
+Rang étagère
+
+- Qu'est-ce qu'un évènement ? 
+2 types Conf / expo :
+Expo :
+ Date 
+ Auteur de livre
+
+- Qu'est-ce qu'une bibliothèque ? 
+
+
+
+- Qu'est-ce qu'un ouvrage ?
+ISBN titre auteur, éditeur, date création, collection
+
+
+- Comment s'inscrit a un évent ? 
+pas de résa 
+
+- Qu'est-ce qui caractérise un eve 
+
+
+
+- Collections ? 
+série de livre 
+
+
+- Quelles sont les info a sauvegardé en stock ?
+Qu'est-ce qui ont réservé 
+
+
+Pour envoyé il faut un employé / pas d'event / un employé a la bibliothèque de livraison
+ 
+Quelqu'un 
