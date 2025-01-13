@@ -1,27 +1,27 @@
-ORGANIZE, 0N LIBRARIES, 11 EVENTS
-EVENTS: id_event, type, date
 AUTHORS: id_author, first_name, last_name
 WRITTEN BY, 0N AUTHORS, 11 BOOKS
-PUBLISHED BY, 0N PUBLISHERS, 11 BOOKS
-PUBLISHERS: id_publisher, name
-
-WORKS, 11 EMPLOYEES, 1N LIBRARIES
-LIBRARIES: id_library, name, address, region
-HOLDS, 0N LIBRARIES, 11 BOOKS: quantity, room, shelf, position
 BOOKS: isbn, title, release_date, collection
+HOLDS, 0N LIBRARIES, 11 BOOKS: quantity, room, shelf, position
+ORGANIZE, 0N LIBRARIES, 11 EVENTS
+EVENTS: id_event, type, date
+
+PUBLISHERS: id_publisher, name
+PUBLISHED BY, 0N PUBLISHERS, 11 BOOKS
 IS LENDED, 1N LENDINGS, 0N BOOKS
-:
-
-EMPLOYEES: id_employee, first_name, last_name, is_present
-FROM_TO, 0N LIBRARIES, 22 ORDERS
-ORDERS: id_order
 ORDERED, 0N ORDERS, 1N BOOKS
-LENDINGS: id_lending, begin_date, end_date, returned
-VIOLATE, 0N SUBSCRIBERS, 11 LENDINGS: delay, return_date
+LIBRARIES: id_library, name, address, region
+WORKS, 11 EMPLOYEES, 1N LIBRARIES
 
-DOES, 0N EMPLOYEES, 11 TRANSFERTS
-TRANSFERTS: id_transfert, date_sent, date_received
-TRANSFERED, 0N TRANSFERTS, 11 ORDERS
-:
+VIOLATE, 0N SUBSCRIBERS, 11 LENDINGS: delay, return_date
+LENDINGS: id_lending, begin_date, end_date, returned
+IS MADE FROM, 11 ORDERS, 01 LENDINGS
+ORDERS: id_order
+FROM_TO, 0N LIBRARIES, 22 ORDERS
+EMPLOYEES: id_employee, first_name, last_name, is_present
+
+SUBSCRIBERS: email, first_name, last_name, dob
 LENDS, 0N SUBSCRIBERS, 11 LENDINGS
-SUBSCRIBERS: email, first_name, last_name, DOB
+:
+TRANSFERED, 0N TRANSFERTS, 11 ORDERS
+TRANSFERTS: id_transfert, date_sent, date_received
+DOES, 0N EMPLOYEES, 11 TRANSFERTS
