@@ -93,7 +93,9 @@ CREATE TABLE TRANSFERTS (
   id_transfert  INTEGER NOT NULL,
   date_sent     DATE,
   date_received DATE,
-  id_employee   INTEGER NOT NULL
+  id_employee   INTEGER NOT NULL,
+  id_library_from INTEGER,
+  id_library_to INTEGER
 );
 
 CREATE TABLE HOLDINGS (
