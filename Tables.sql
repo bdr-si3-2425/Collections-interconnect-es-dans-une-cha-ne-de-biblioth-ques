@@ -20,7 +20,7 @@ CREATE TABLE EMPLOYEES (
   id_employee INTEGER NOT NULL,
   first_name  VARCHAR(42),
   last_name   VARCHAR(42),
-  is_present  VARCHAR(42), --references une table du calendirer, ou des triggers l'update chaque jour
+  is_present  VARCHAR(42),
   id_library  INTEGER NOT NULL
 );
 
@@ -41,12 +41,12 @@ CREATE TABLE IS_LENDED (
 CREATE TABLE LENDINGS (
   PRIMARY KEY (id_lending),
   id_lending  INTEGER NOT NULL,
-  id_library VARCHAR(42) NOT NULL,
+  id_library INTEGER NOT NULL,
   email       VARCHAR(42) NOT NULL,
   begin_date  DATE DEFAULT CURRENT_DATE,
-  end_date    DATE,
+  end_date    DATE DEFAULT CURRENT_DATE + INTERVAL '1 month',
   returned    BOOLEAN DEFAULT FALSE,
-  delays      VARCHAR(42) DEFAULT NULL,
+  delays      INTEGER DEFAULT NULL,
   return_date DATE DEFAULT NULL
 );
 
@@ -94,8 +94,8 @@ CREATE TABLE TRANSFERTS (
   date_sent     DATE,
   date_received DATE,
   id_employee   INTEGER NOT NULL,
-  id_library_from INTEGER,
-  id_library_to INTEGER
+  id_library_from INTEGER NOT NULL,
+  id_library_to INTEGER NOT NULL
 );
 
 CREATE TABLE HOLDINGS (
@@ -152,6 +152,7 @@ ALTER TABLE IS_LENDED ADD FOREIGN KEY (isbn) REFERENCES BOOKS (isbn);
 ALTER TABLE IS_LENDED ADD FOREIGN KEY (id_lending) REFERENCES LENDINGS (id_lending);
 
 ALTER TABLE LENDINGS ADD FOREIGN KEY (email) REFERENCES SUBSCRIBERS (email);
+ALTER TABLE LENDINGS ADD FOREIGN KEY (id_library) REFERENCES LIBRARIES (id_library);
 
 ALTER TABLE ORDERED ADD FOREIGN KEY (isbn) REFERENCES BOOKS (isbn);
 ALTER TABLE ORDERED ADD FOREIGN KEY (id_order) REFERENCES ORDERS (id_order);
@@ -160,6 +161,8 @@ ALTER TABLE ORDERS ADD FOREIGN KEY (id_transfert) REFERENCES TRANSFERTS (id_tran
 ALTER TABLE ORDERS ADD FOREIGN KEY (id_lending) REFERENCES LENDINGS (id_lending);
 
 ALTER TABLE TRANSFERTS ADD FOREIGN KEY (id_employee) REFERENCES EMPLOYEES (id_employee);
+ALTER TABLE TRANSFERTS ADD FOREIGN KEY (id_library_from) REFERENCES LIBRARIES (id_library);
+ALTER TABLE TRANSFERTS ADD FOREIGN KEY (id_library_to) REFERENCES LIBRARIES (id_library);
 
 ALTER TABLE HOLDINGS ADD FOREIGN KEY (isbn) REFERENCES BOOKS (isbn);
 ALTER TABLE HOLDINGS ADD FOREIGN KEY (id_library) REFERENCES LIBRARIES (id_library);
