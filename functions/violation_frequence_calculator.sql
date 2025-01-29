@@ -1,4 +1,4 @@
---Returns the number number of violation done by a subscriber in the last year--
+--Returns the number of violation done by a subscriber in the last year--
 CREATE OR REPLACE FUNCTION violation_frequence_calculator(p_email VARCHAR(42))
 RETURNS INTEGER AS $$
 DECLARE frenquency INTEGER;

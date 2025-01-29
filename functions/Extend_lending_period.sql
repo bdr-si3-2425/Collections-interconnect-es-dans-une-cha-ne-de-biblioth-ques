@@ -1,7 +1,7 @@
 -- You enter the function with the id of the lending you want to extend the period of. --
 -- The function will update the end_date of the lending by adding 14 days to it --
 -- if the lending is not returned, the end_date is greater than the current date, --
--- and the difference between the end_date and begin_date is <= 31 days (aka the lending hasn't been extended) --
+-- and the difference between the end_date and begin_date is <= 38 days (aka the lending hasn't been extended) --
 CREATE OR REPLACE FUNCTION EXTEND_LENDING_PERIOD(p_id_lending INTEGER)
 RETURNS BOOLEAN as $$
 BEGIN
