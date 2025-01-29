@@ -11,7 +11,7 @@ BEGIN
         SELECT * FROM is_lended
         WHERE id_lending = NEW.id_lending
     LOOP
-        PERFORM add_book(rec.isbn, rec.id_library);
+        PERFORM add_book(rec.isbn, NEW.id_library);
     END LOOP;
     END IF;
     RETURN NEW;
