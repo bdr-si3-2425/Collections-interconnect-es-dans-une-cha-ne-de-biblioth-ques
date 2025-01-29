@@ -57,8 +57,8 @@ INSERT INTO LENDINGS VALUES (1, 1, 'subscriber.nb1@gmail.com', '2025-01-19', '20
 INSERT INTO IS_LENDED VALUES (1, '4');
 INSERT INTO IS_LENDED VALUES (1, '5');
 
---Transfert (id, date_sent, date_received, id_employee)--
-INSERT INTO TRANSFERTS VALUES (1, NULL, NULL, 1);
+--Transfert (id, date_sent, date_received, id_employee, id_library_from , id_library_to)--
+INSERT INTO TRANSFERTS VALUES (1, NULL, NULL, 1, 1, 2);
 
 --Orders (id, lending_id, transfert_id, library_from_id, library_to_id)--
 INSERT INTO ORDERS VALUES (1, 1, 1, 2, 1);
