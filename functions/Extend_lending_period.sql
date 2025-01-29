@@ -9,7 +9,7 @@ BEGIN
     SET end_date = end_date + INTERVAL '14 days'
     WHERE returned = FALSE
         AND end_date > CURRENT_DATE
-        AND end_date-begin_date <= 31
+        AND end_date-begin_date <= 38
         AND id_lending = p_id_lending;
 
     RETURN FOUND;
