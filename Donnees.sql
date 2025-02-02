@@ -39,9 +39,9 @@ INSERT INTO COLLECTIONARY VALUES ('3', 1);
 INSERT INTO COLLECTIONARY VALUES ('4', 2);
 INSERT INTO COLLECTIONARY VALUES ('5', 2);
 
---Employees (id, first_name, last_name, is_present, id_library)
-INSERT INTO EMPLOYEES VALUES (1, 'Marius', 'Barbaud', 'Yes?', 1);
-INSERT INTO EMPLOYEES VALUES (2, 'Lou', 'Amelie', 'Yes?', 2);
+--Employees (id, first_name, last_name, id_library)--
+INSERT INTO EMPLOYEES VALUES (1, 'Marius', 'Barbaud', 1);
+INSERT INTO EMPLOYEES VALUES (2, 'Lou', 'Amelie', 2);
 
 --Subscribers (email, first_name, last_name, date_of_birth)--
 INSERT INTO SUBSCRIBERS VALUES ('default@mail.com', null, null, null);
