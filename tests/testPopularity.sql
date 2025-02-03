@@ -1,3 +1,4 @@
+-- Tests for the popular_books_by_region function
 SELECT * FROM popular_books_by_region('PACA');
 
 select * from lendings;
