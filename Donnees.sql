@@ -39,9 +39,9 @@ INSERT INTO COLLECTIONARY VALUES ('3', 1);
 INSERT INTO COLLECTIONARY VALUES ('4', 2);
 INSERT INTO COLLECTIONARY VALUES ('5', 2);
 
---Employees (id, first_name, last_name, is_present, id_library)
-INSERT INTO EMPLOYEES VALUES (1, 'Marius', 'Barbaud', 'Yes?', 1);
-INSERT INTO EMPLOYEES VALUES (2, 'Lou', 'Amelie', 'Yes?', 2);
+--Employees (id, first_name, last_name, id_library)--
+INSERT INTO EMPLOYEES VALUES (1, 'Marius', 'Barbaud', 1);
+INSERT INTO EMPLOYEES VALUES (2, 'Lou', 'Amelie', 2);
 
 --Subscribers (email, first_name, last_name, date_of_birth)--
 INSERT INTO SUBSCRIBERS VALUES ('default@mail.com', null, null, null);
@@ -52,6 +52,7 @@ INSERT INTO SUBSCRIBERS VALUES ('Jean.Jacques@gmail.com', 'Jean', 'Jacques', '20
 --Lendings (id, library_id, subscriber_email, begin, end, returned?, delays, return_date)--
 INSERT INTO LENDINGS VALUES (0, 0, 'default@mail.com', NULL, NULL, NULL, NULL, NULL); --Library lendings
 INSERT INTO LENDINGS VALUES (1, 1, 'subscriber.nb1@gmail.com', '2025-01-19', '2025-02-19', FALSE, NULL, NULL);
+INSERT INTO LENDINGS VALUES (2, 2, 'subscriber.nb2@gmail.com', '2024-11-05', '2025-12-19', FALSE, NULL, NULL);
 
 --Is_lended (lending_id, isbn)--
 INSERT INTO IS_LENDED VALUES (1, '4');
@@ -78,11 +79,6 @@ INSERT INTO HOLDINGS VALUES ('5', 1, 2, 'A', 'Fantasy', '09');
 INSERT INTO HOLDINGS VALUES ('1', 2, 1, 'B', 'Fantasy', '10');
 INSERT INTO HOLDINGS VALUES ('4', 2, 5, 'B', 'Fantasy', '15');
 INSERT INTO HOLDINGS VALUES ('5', 2, 5, 'B', 'Fantasy', '16');
-
-
---Events (id, event_type, date, id_library)--
-INSERT INTO EVENTS VALUES (1, 'Conference', '22-01-2025', 2);
-INSERT INTO EVENTS VALUES (2, 'Exposition', '20-01-2025', 1);
 
 --Conferences (id, event_type, date, id_library, id_author)--
 INSERT INTO CONFERENCES VALUES (1, 'Conference', '2025-01-22', 2, 2);
