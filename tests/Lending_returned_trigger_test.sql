@@ -11,7 +11,7 @@ SELECT * FROM LENDINGS;
 
 SELECT * FROM IS_LENDED;
 
---There currently is 4 copies of the book with isbn 2 and 3 with isbn 3--
+--There is by default 4 copies of the book with isbn 2 and 3 with isbn 3 --
 SELECT * FROM HOLDINGS WHERE id_library = 1 ORDER BY isbn;
 
 --We return the lending--
