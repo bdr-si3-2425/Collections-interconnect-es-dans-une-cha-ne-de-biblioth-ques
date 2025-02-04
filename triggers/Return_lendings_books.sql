@@ -7,10 +7,12 @@ RETURNS TRIGGER AS $$
 DECLARE rec RECORD;
 BEGIN
     IF OLD.returned = FALSE AND NEW.returned = TRUE THEN
+    -- We record the lines from is_lended table that correspinds to the lending that is returned
         FOR rec IN
         SELECT * FROM is_lended
         WHERE id_lending = NEW.id_lending
     LOOP
+        --we add a book to the holdings of the library for every lended book
         PERFORM add_book(rec.isbn, NEW.id_library, 1);
     END LOOP;
     END IF;
