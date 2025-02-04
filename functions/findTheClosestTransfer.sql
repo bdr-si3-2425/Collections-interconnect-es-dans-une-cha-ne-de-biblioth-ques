@@ -28,7 +28,7 @@ BEGIN
 		SELECT MIN(id_employee) INTO v_idEmployee FROM employees where id_library = id_from;
 		-- Find the next date
 		SELECT adjust_transfer_date((SELECT DATE_TRUNC('week', CURRENT_DATE)::DATE + 6), id_from) INTO v_newDate;
-        -- Insert the new transfer
+        -- Insert the new transfer use an other function explain below
 		INSERT INTO Transferts VALUES (v_maxId,v_newDate , v_newDate + INTERVAL '1 week', v_idEmployee, id_from, id_to);
         -- Return the id of the new transfer
         RETURN v_maxId;

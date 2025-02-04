@@ -1,5 +1,5 @@
--- Comment gérer l’intégration d’une nouvelle bibliothèque au réseau et l’attribution de ses
--- ressources ?
+-- Comment gérer l’intégration d’une nouvelle bibliothèque au 
+-- réseau et l’attribution de ses ressources ?
 
 -- Pour ajouter une nouvelle bibliothèque 
 
@@ -26,6 +26,3 @@ INSERT INTO holdings VALUES (4, 4, 3, 1, 'Fantasy', 01);
 
 -- Voici les livres présent dans la nouvelle bibliothèque
 SELECT * FROM holdings where id_library = 4;
-
-
-
