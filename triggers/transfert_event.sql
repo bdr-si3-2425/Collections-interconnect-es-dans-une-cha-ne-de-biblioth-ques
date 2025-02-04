@@ -1,3 +1,9 @@
+-- Purpose: Create a trigger that updates the date of the transferts when an event is added or updated.
+-- The trigger will update the date_sent and date_received of the transferts that have the same date as the event and the same library as the event.
+-- The trigger will call the adjust_transfer_date function to find a date that does not conflict with any other event in the same library.
+-- The trigger will update the date_sent of the transferts to the new date and the date_received to the new date + 1 week.
+-- The trigger will be called after an insert or update on the Events table.
+-- The trigger will be called for each row.
 CREATE OR REPLACE FUNCTION check_transfert_event()
 RETURNS TRIGGER AS $$
 DECLARE

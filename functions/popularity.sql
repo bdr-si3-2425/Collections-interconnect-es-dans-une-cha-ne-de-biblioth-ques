@@ -1,3 +1,6 @@
+-- Function: popular_books_by_region(region_name VARCHAR)
+-- This function returns the most popular books in a given region. It takes a region name as an argument 
+-- returns a table with the 5 most popular books and the total number of loans. 
 CREATE OR REPLACE FUNCTION popular_books_by_region(region_name VARCHAR)
 RETURNS TABLE(
     title VARCHAR,
