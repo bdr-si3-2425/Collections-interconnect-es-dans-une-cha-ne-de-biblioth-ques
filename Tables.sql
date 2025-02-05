@@ -57,10 +57,9 @@ CREATE TABLE LIBRARIES (
 );
 
 CREATE TABLE ORDERED (
-  PRIMARY KEY (id_order, isbn),
+  PRIMARY KEY (id_order, id_transfert),
   id_order INTEGER NOT NULL,
-  isbn     VARCHAR(42) NOT NULL,
-  quantity INTEGER NOT NULL
+  id_transfert INTEGER NOT NULL
 );
 
 CREATE TABLE ORDERS (
@@ -71,6 +70,23 @@ CREATE TABLE ORDERS (
   id_library_from INTEGER,
   id_library_to INTEGER,
   UNIQUE (id_lending)
+);
+
+CREATE TABLE TRANSFERED (
+  PRIMARY KEY (id_transfert, isbn),
+  id_transfert INTEGER NOT NULL,
+  isbn     VARCHAR(42) NOT NULL,
+  quantity INTEGER NOT NULL
+);
+
+CREATE TABLE TRANSFERTS (
+  PRIMARY KEY (id_transfert),
+  id_transfert  INTEGER NOT NULL,
+  date_sent     DATE,
+  date_received DATE,
+  id_employee   INTEGER NOT NULL,
+  id_library_from INTEGER NOT NULL,
+  id_library_to INTEGER NOT NULL
 );
 
 CREATE TABLE PUBLISHERS (
@@ -85,16 +101,6 @@ CREATE TABLE SUBSCRIBERS (
   first_name VARCHAR(42),
   last_name  VARCHAR(42),
   dob        DATE
-);
-
-CREATE TABLE TRANSFERTS (
-  PRIMARY KEY (id_transfert),
-  id_transfert  INTEGER NOT NULL,
-  date_sent     DATE,
-  date_received DATE,
-  id_employee   INTEGER NOT NULL,
-  id_library_from INTEGER NOT NULL,
-  id_library_to INTEGER NOT NULL
 );
 
 CREATE TABLE HOLDINGS (
@@ -153,11 +159,14 @@ ALTER TABLE IS_LENDED ADD FOREIGN KEY (id_lending) REFERENCES LENDINGS (id_lendi
 ALTER TABLE LENDINGS ADD FOREIGN KEY (email) REFERENCES SUBSCRIBERS (email);
 ALTER TABLE LENDINGS ADD FOREIGN KEY (id_library) REFERENCES LIBRARIES (id_library);
 
-ALTER TABLE ORDERED ADD FOREIGN KEY (isbn) REFERENCES BOOKS (isbn);
+ALTER TABLE ORDERED ADD FOREIGN KEY (id_transfert) REFERENCES TRANSFERTS (id_transfert);
 ALTER TABLE ORDERED ADD FOREIGN KEY (id_order) REFERENCES ORDERS (id_order);
 
 ALTER TABLE ORDERS ADD FOREIGN KEY (id_transfert) REFERENCES TRANSFERTS (id_transfert);
 ALTER TABLE ORDERS ADD FOREIGN KEY (id_lending) REFERENCES LENDINGS (id_lending);
+
+ALTER TABLE TRANSFERED ADD FOREIGN KEY (isbn) REFERENCES BOOKS (isbn);
+ALTER TABLE TRANSFERED ADD FOREIGN KEY (id_transfert) REFERENCES TRANSFERTS (id_transfert);
 
 ALTER TABLE TRANSFERTS ADD FOREIGN KEY (id_employee) REFERENCES EMPLOYEES (id_employee);
 ALTER TABLE TRANSFERTS ADD FOREIGN KEY (id_library_from) REFERENCES LIBRARIES (id_library);
