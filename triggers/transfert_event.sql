@@ -29,7 +29,13 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE TRIGGER trigger_check_transfert_event
-AFTER INSERT OR UPDATE ON Events
+CREATE TRIGGER trigger_check_transfert_expo
+AFTER INSERT OR UPDATE ON EXPOSITIONS
 FOR EACH ROW
 EXECUTE FUNCTION check_transfert_event();
+
+CREATE TRIGGER trigger_check_transfert_conf
+AFTER INSERT OR UPDATE ON CONFERENCES
+FOR EACH ROW
+EXECUTE FUNCTION check_transfert_event();
+
