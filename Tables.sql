@@ -67,8 +67,6 @@ CREATE TABLE ORDERS (
   id_order     INTEGER NOT NULL,
   id_lending   INTEGER NOT NULL,
   id_transfert INTEGER NOT NULL,
-  id_library_from INTEGER,
-  id_library_to INTEGER,
   UNIQUE (id_lending)
 );
 
