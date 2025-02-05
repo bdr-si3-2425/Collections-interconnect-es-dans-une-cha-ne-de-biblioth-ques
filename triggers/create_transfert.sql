@@ -1,9 +1,7 @@
 CREATE OR REPLACE FUNCTION create_transfert(p_id_lending INTEGER, p_id_library INTEGER)
 RETURNS INTEGER AS $id_transfert$
 DECLARE 
-	rec_isbn RECORD;
 	rec_librairies RECORD;
-    books_to_order INTEGER;
     id_transfert INTEGER;
 BEGIN
     WITH RankedHoldings AS (
@@ -24,12 +22,12 @@ BEGIN
 	VALUES(id_order, NEW.id_lending);
 	
 	FOR rec_librairies IN
-	SELECT isbn, quantity
+	SELECT isbn
 	FROM RankedHoldings
 	WHERE rank = 1
 	LOOP
 		INSERT INTO transfered
-		VALUES(id_transfert, isbn, quantity);
+		VALUES(id_transfert, isbn, 1);
         PERFORM add_book(p_id_library, -1);
 	END LOOP;	
 	
