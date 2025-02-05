@@ -61,12 +61,15 @@ INSERT INTO IS_LENDED VALUES (1, '5');
 --Transfert (id, date_sent, date_received, id_employee, id_library_from , id_library_to)--
 INSERT INTO TRANSFERTS VALUES (1, NULL, NULL, 1, 1, 2);
 
---Orders (id, lending_id, transfert_id, library_from_id, library_to_id)--
-INSERT INTO ORDERS VALUES (1, 1, 1, 2, 1);
+--Orders (id, lending_id)--
+INSERT INTO ORDERS VALUES (1, 1);
 
---Ordered (id, isbn, quantity)--
-INSERT INTO ORDERED VALUES (1, '4', 2);
-INSERT INTO ORDERED VALUES (1, '5', 2);
+--Transfered (id, isbn, quantity)--
+INSERT INTO TRANSFERED VALUES (1, '4', 2);
+INSERT INTO TRANSFERED VALUES (1, '5', 2);
+
+--Ordereed (id_order, id_transfert)--
+INSERT INTO ORDERED VALUES (1, 1);
 
 --Holdings (isbn, id_library, quantity, room, shelf, position)--
 --Library 1-- Has all of Harry Potter
