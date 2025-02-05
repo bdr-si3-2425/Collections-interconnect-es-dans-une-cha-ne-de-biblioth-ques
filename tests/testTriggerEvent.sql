@@ -11,4 +11,3 @@ DELETE FROM EXPOSITIONS WHERE id_event = 9;
 
 -- La nouvelle date est le 2025-02-12
 SELECT * FROM transferts where id_transfert = 3;
-
