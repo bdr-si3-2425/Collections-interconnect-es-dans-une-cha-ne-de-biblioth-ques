@@ -61,8 +61,8 @@ INSERT INTO IS_LENDED VALUES (1, '5');
 --Transfert (id, date_sent, date_received, id_employee, id_library_from , id_library_to)--
 INSERT INTO TRANSFERTS VALUES (1, NULL, NULL, 1, 1, 2);
 
---Orders (id, lending_id, transfert_id)--
-INSERT INTO ORDERS VALUES (1, 1, 1);
+--Orders (id, lending_id)--
+INSERT INTO ORDERS VALUES (1, 1);
 
 --Transfered (id, isbn, quantity)--
 INSERT INTO TRANSFERED VALUES (1, '4', 2);
