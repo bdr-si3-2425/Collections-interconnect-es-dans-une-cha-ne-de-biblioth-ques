@@ -1,9 +1,10 @@
 CREATE OR REPLACE FUNCTION create_transfert(p_id_lending INTEGER, p_id_library INTEGER)
 RETURNS INTEGER AS $id_transfert$
-    DECLARE rec_isbn RECORD;
-	DECLARE rec_librairies RECORD;
-    DECLARE books_to_order INTEGER;
-    DECLARE id_transfert INTEGER;
+DECLARE 
+	rec_isbn RECORD;
+	rec_librairies RECORD;
+    books_to_order INTEGER;
+    id_transfert INTEGER;
 BEGIN
     WITH RankedHoldings AS (
         SELECT isbn, id_library, quantity,
@@ -17,19 +18,20 @@ BEGIN
         )
     )
     
-    id_transfert := id_transfert_sec.nextval();
-
-
-    FOR rec_isbn IN
-    SELECT isbn, id_library
-    FROM RankedHoldings
-    WHERE rank = 1;
-    LOOP
-        
-		ELSE
-        	PERFORM add_book(rec_is_lended.isbn, NEW.id_library, -1);
-		END IF;
-    END LOOP;
+    id_transfert := nextval("transferts_id_seq");
+	
+	INSERT INTO ORDER
+	VALUES(id_order, NEW.id_lending);
+	
+	FOR rec_librairies IN
+	SELECT isbn, quantity
+	FROM RankedHoldings
+	WHERE rank = 1
+	LOOP
+		INSERT INTO transfered
+		VALUES(id_transfert, isbn, quantity);
+	END LOOP;	
+	
     RETURN id_transfert;
 END;
-$$ LANGUAGE plpgsql;
+$id_transfert$ LANGUAGE plpgsql;

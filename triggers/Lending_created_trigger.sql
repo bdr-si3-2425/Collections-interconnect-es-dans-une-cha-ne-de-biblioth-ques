@@ -20,9 +20,6 @@ BEGIN
             SELECT isbn FROM is_lended WHERE id_lending = NEW.id_lending
         )
     )
-    SELECT isbn, id_library
-    FROM RankedHoldings
-    WHERE rank = 1;
 
     FOR rec_is_lended IN
     SELECT * FROM is_lended
@@ -48,6 +45,7 @@ BEGIN
 		FOR rec_librairies IN
 		SELECT DISTINCT id_library
 		FROM RankedHoldings
+        WHERE rank = 1
 		LOOP
 			id_transfert := create_transfert(id_lending, id_library);
 			INSERT INTO ordered
