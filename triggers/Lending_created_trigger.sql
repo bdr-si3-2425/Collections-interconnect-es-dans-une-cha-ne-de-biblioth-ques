@@ -1,7 +1,7 @@
 --Function called by the trigger Lending_created_trigger--
 --updates the quantity of books in holdings when a lending is created--
 --Calls add_book function to decrease the quantity of books in holdings--
-CREATE OR REPLACE FUNCTION remove_or_order_lended_books()
+CREATE OR REPLACE FUNCTION remove_or_order_lended_books(p_id_library INTEGER)
 RETURNS TRIGGER AS $$
     DECLARE rec_is_lended RECORD;
 	DECLARE rec_librairies RECORD;
@@ -25,7 +25,10 @@ BEGIN
     SELECT * FROM is_lended
     WHERE id_lending = NEW.id_lending
     LOOP
-        IF NOT EXISTS (SELECT isbn FROM holdings)
+        IF NOT EXISTS (SELECT isbn FROM holdings 
+            WHERE id_library = NEW.id_library 
+            AND isbn = rec_is_lended.isbn
+            )
 			WHERE isbn = rec_is_lended.isbn AND id_library = NEW.id_library)
 			FOR 
 		THEN
