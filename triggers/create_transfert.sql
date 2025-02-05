@@ -30,6 +30,7 @@ BEGIN
 	LOOP
 		INSERT INTO transfered
 		VALUES(id_transfert, isbn, quantity);
+        PERFORM add_book(p_id_library, -1);
 	END LOOP;	
 	
     RETURN id_transfert;
